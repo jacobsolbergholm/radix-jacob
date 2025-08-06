@@ -16,7 +16,7 @@ spec:
       publicPort: http
       ports:
        - name: http
-         port: 8080
+         port: 1234
       environmentConfig:
         - environment: dev
           horizontalScaling:
