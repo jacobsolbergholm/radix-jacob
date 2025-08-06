@@ -14,21 +14,26 @@ func getTestHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Test endpoint reached")
 }
 
-func redirectToHttps(w http.ResponseWriter, r *http.Request) {
+func redirectMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("X-Forwarded-Proto") != "https" || r.TLS != nil {
+			target := "https://" + r.Host + r.URL.RequestURI()
+			http.Redirect(w, r, target, http.StatusMovedPermanently)
 
-	if r.Header.Get("X-Forwarded-Proto") == "https" || r.TLS != nil {
-		return
-	}
+			return
+		}
 
-	target := "https://" + r.Host + r.URL.RequestURI()
-	http.Redirect(w, r, target, http.StatusMovedPermanently)
+		next.ServeHTTP(w, r)
+	})
 }
 
 func main() {
-	http.HandleFunc("/", getRootHandler)
-	http.HandleFunc("/test", getTestHandler)
+	mux := http.NewServeMux()
 
-	err := http.ListenAndServe(":1234", http.HandlerFunc(redirectToHttps))
+	mux.HandleFunc("/", getRootHandler)
+	mux.HandleFunc("/test", getTestHandler)
+
+	err := http.ListenAndServe(":1234", redirectMiddleware(mux))
 
 	if errors.Is(err, http.ErrServerClosed) {
 		fmt.Println("Server was closed")
