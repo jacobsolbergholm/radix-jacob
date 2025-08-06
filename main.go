@@ -15,6 +15,11 @@ func getTestHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func redirectToHttps(w http.ResponseWriter, r *http.Request) {
+
+	if r.Header.Get("X-Forwarded-Proto") == "https" || r.TLS != nil {
+		return
+	}
+
 	target := "https://" + r.Host + r.URL.RequestURI()
 	http.Redirect(w, r, target, http.StatusMovedPermanently)
 }
