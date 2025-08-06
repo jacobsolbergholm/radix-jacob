@@ -14,11 +14,16 @@ func getTestHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Test endpoint reached")
 }
 
+func redirectToHttps(w http.ResponseWriter, r *http.Request) {
+	target := "https://" + r.Host + r.URL.RequestURI()
+	http.Redirect(w, r, target, http.StatusMovedPermanently)
+}
+
 func main() {
 	http.HandleFunc("/", getRootHandler)
 	http.HandleFunc("/test", getTestHandler)
 
-	err := http.ListenAndServe(":1234", nil)
+	err := http.ListenAndServe(":1234", http.HandlerFunc(redirectToHttps))
 
 	if errors.Is(err, http.ErrServerClosed) {
 		fmt.Println("Server was closed")
