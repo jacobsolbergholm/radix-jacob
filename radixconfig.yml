@@ -18,7 +18,7 @@ spec:
        - name: http
          port: 8080
       environmentConfig:
-        - environment: jacob-dev
+        - environment: dev
           horizontalScaling:
             maxReplicas: 1
             minReplicas: 0
