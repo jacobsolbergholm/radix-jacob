@@ -14,15 +14,27 @@ func getTestHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Test endpoint reached")
 }
 
+func getHeadersHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Headers endpoint reached\n")
+
+	for key, values := range r.Header {
+		fmt.Fprintf(w, "%s: %s\n", key, values)
+	}
+}
+
 func redirectMiddleware(next http.Handler) http.Handler {
+	// return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	// 	if r.Header.Get("X-Forwarded-Proto") != "https" || r.TLS != nil {
+	// 		target := "https://" + r.Host + r.URL.RequestURI()
+	// 		http.Redirect(w, r, target, http.StatusMovedPermanently)
+
+	// 		return
+	// 	}
+
+	// 	next.ServeHTTP(w, r)
+	// })
+
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Header.Get("X-Forwarded-Proto") != "https" || r.TLS != nil {
-			target := "https://" + r.Host + r.URL.RequestURI()
-			http.Redirect(w, r, target, http.StatusMovedPermanently)
-
-			return
-		}
-
 		next.ServeHTTP(w, r)
 	})
 }
@@ -32,6 +44,7 @@ func main() {
 
 	mux.HandleFunc("/", getRootHandler)
 	mux.HandleFunc("/test", getTestHandler)
+	mux.HandleFunc("/headers", getHeadersHandler)
 
 	err := http.ListenAndServe(":1234", redirectMiddleware(mux))
 
