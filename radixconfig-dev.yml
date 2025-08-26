@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/equinor/radix-operator/release/json-schema/radixapplication.json
+
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+metadata:
+  name: jacob-dev
+spec:
+  build:
+    useBuildKit: true
+  environments:
+    - name: dev
+      build:
+        from: master
+    - name: prod
+  components:
+    - name: frontend
+      src: "."
+      publicPort: http
+      ports:
+       - name: http
+         port: 1234
+      environmentConfig:
+        - environment: dev
+          horizontalScaling:
+            maxReplicas: 1
+            minReplicas: 0
+            triggers:
+              - name: cron
+                cron:
+                  timezone: Europe/Oslo
+                  start: 0 7 * * 1-5 # 07:00 Monday - Friday
+                  end: 0 17 * * 1-5 # 17:00 Monday - Friday
+                  desiredReplicas: 1
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "5M"
+            limits:
+              cpu: "20m"
+              memory: "10Mi"
+          #variables:
+          #  GOMAXPROCS: "1"
+        #- environment: prod
+        #  replicas: 2
+        #  resources:
+        #    requests:
+        #      cpu: "200m"
+        #      memory: "300M"
+        #    limits:
+        #      cpu: "500m"
+        #      memory: "500M"
+        #  variables:
+        #    GOMAXPROCS: "2"
+      authentication:
+        oauth2:
+          clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
+          setXAuthRequestHeaders: true
+          setAuthorizationHeader: true
+          sessionStoreType: systemManaged
+          scope: openid email profile offline_access # https://graph.microsoft.com/User.Read
+          credentials: azureWorkloadIdentity
