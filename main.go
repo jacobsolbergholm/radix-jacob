@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os/exec"
 )
 
 func getRootHandler(w http.ResponseWriter, r *http.Request) {
@@ -20,6 +21,17 @@ func getHeadersHandler(w http.ResponseWriter, r *http.Request) {
 	for key, values := range r.Header {
 		fmt.Fprintf(w, "%s: %s\n", key, values)
 	}
+}
+
+func getUserHandler(w http.ResponseWriter, r *http.Request) {
+	out, err := exec.Command("id", "-u").Output()
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Fprintf(w, "Running as user %s", out)
 }
 
 func redirectMiddleware(next http.Handler) http.Handler {
@@ -45,6 +57,7 @@ func main() {
 	mux.HandleFunc("/", getRootHandler)
 	mux.HandleFunc("/test", getTestHandler)
 	mux.HandleFunc("/headers", getHeadersHandler)
+	mux.HandleFunc("/runasuser", getUserHandler)
 
 	err := http.ListenAndServe(":1234", redirectMiddleware(mux))
 
