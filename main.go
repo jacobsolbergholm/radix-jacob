@@ -56,7 +56,7 @@ func main() {
 
 	mux.HandleFunc("/", getRootHandler)
 	mux.HandleFunc("/test", getTestHandler)
-	mux.HandleFunc("/headers", getHeadersHandler)
+	//mux.HandleFunc("/headers", getHeadersHandler)
 	mux.HandleFunc("/runasuser", getUserHandler)
 
 	err := http.ListenAndServe(":1234", redirectMiddleware(mux))
