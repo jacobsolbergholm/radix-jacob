@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"os/exec"
+	"os"
 )
 
 func getRootHandler(w http.ResponseWriter, r *http.Request) {
@@ -24,14 +24,8 @@ func getHeadersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUserHandler(w http.ResponseWriter, r *http.Request) {
-	out, err := exec.Command("id", "-u").Output()
-
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	fmt.Fprintf(w, "Running as user %s", out)
+	fmt.Fprintf(w, "UID: %d\n", os.Getuid())
+	fmt.Fprintf(w, "GID: %d\n", os.Getgid())
 }
 
 func redirectMiddleware(next http.Handler) http.Handler {
