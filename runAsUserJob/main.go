@@ -8,7 +8,7 @@ import (
 )
 
 func printUser() {
-	log.SetOutput(os.Stderr)
+	log.Println("TEST")
 	log.Println("UID: " + strconv.Itoa(os.Getuid()))
 	log.Println("GID: " + strconv.Itoa(os.Getgid()))
 }
