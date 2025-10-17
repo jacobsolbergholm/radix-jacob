@@ -7,8 +7,8 @@ ENV CGO_ENABLED=0 \
 
 WORKDIR /src
 #COPY go.mod go.sum ./
-#COPY go.mod ./
-#RUN go mod download
+COPY ../go.mod ./
+RUN go mod download
 COPY . .
 RUN go build -ldflags="-s -w" -o /build/runAsUserJob
 
