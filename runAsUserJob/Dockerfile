@@ -12,8 +12,14 @@ RUN go mod download
 COPY . .
 RUN go build -ldflags="-s -w" -o /build/runAsUserJob
 
-# Final stage, ref https://github.com/GoogleContainerTools/distroless/blob/main/base/README.md for distroless
-FROM ubuntu:22.04
+FROM alpine:3.21
+RUN apk add --no-cache \
+    bash \
+    curl \
+    wget \
+    ps \
+    procps \
+    coreutils
 WORKDIR /app
 COPY --from=builder /build/runAsUserJob .
 USER 1000
