@@ -13,7 +13,7 @@ COPY . .
 RUN go build -ldflags="-s -w" -o /build/runAsUserJob
 
 # Final stage, ref https://github.com/GoogleContainerTools/distroless/blob/main/base/README.md for distroless
-FROM gcr.io/distroless/static
+FROM ubuntu:22.04
 WORKDIR /app
 COPY --from=builder /build/runAsUserJob .
 USER 1000
