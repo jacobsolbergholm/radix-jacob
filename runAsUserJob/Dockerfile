@@ -12,7 +12,7 @@ RUN go mod download
 COPY . .
 RUN go build -ldflags="-s -w" -o /build/runAsUserJob
 
-FROM alpine:3.21
+FROM ubuntu:latest
 WORKDIR /app
 COPY --from=builder /build/runAsUserJob .
 USER 1000
