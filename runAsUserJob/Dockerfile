@@ -13,13 +13,6 @@ COPY . .
 RUN go build -ldflags="-s -w" -o /build/runAsUserJob
 
 FROM alpine:3.21
-RUN apk add --no-cache \
-    bash \
-    curl \
-    wget \
-    ps \
-    procps \
-    coreutils
 WORKDIR /app
 COPY --from=builder /build/runAsUserJob .
 USER 1000
