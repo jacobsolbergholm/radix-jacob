@@ -61,3 +61,10 @@ spec:
       #     sessionStoreType: systemManaged
       #     scope: openid email profile offline_access # https://graph.microsoft.com/User.Read
       #     credentials: azureWorkloadIdentity
+  jobs:
+    - name: testRunAsUser
+      src: runAsUserJob
+      schedulerPort: 8000
+      ports:
+        - name: http
+          port: 3000
