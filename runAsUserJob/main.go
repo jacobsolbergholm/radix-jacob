@@ -1,16 +1,19 @@
 package main
 
 import (
-	"log"
+	"context"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/rs/zerolog/log"
 )
 
 func printUser() {
-	log.Println("TEST")
-	log.Println("UID: " + strconv.Itoa(os.Getuid()))
-	log.Println("GID: " + strconv.Itoa(os.Getgid()))
+	ctx := context.Background()
+	log.Ctx(ctx).Info().Msg("test")
+	log.Ctx(ctx).Info().Msg("UID: " + strconv.Itoa(os.Getuid()))
+	log.Ctx(ctx).Info().Msg("GID: " + strconv.Itoa(os.Getgid()))
 }
 
 func main() {
