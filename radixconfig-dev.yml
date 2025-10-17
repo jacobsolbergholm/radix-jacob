@@ -62,7 +62,7 @@ spec:
       #     scope: openid email profile offline_access # https://graph.microsoft.com/User.Read
       #     credentials: azureWorkloadIdentity
   jobs:
-    - name: testRunAsUser
+    - name: run-as-user
       src: runAsUserJob
       schedulerPort: 8000
       ports:
