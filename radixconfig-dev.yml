@@ -63,9 +63,7 @@ spec:
       #     credentials: azureWorkloadIdentity
   jobs:
     - name: run-as-user
-      environmentVariables:
-        LOG_LEVEL: "debug"
-        LOG_FORMAT: "console"
+      image: ubuntu:latest
       src: runAsUserJob
       schedulerPort: 8000
       ports:
