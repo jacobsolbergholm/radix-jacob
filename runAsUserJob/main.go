@@ -9,6 +9,8 @@ import (
 func printUser() {
 	fmt.Printf("UID: %d\n", os.Getuid())
 	fmt.Printf("GID: %d\n", os.Getgid())
+
+	os.Stdout.Sync()
 }
 
 func main() {
