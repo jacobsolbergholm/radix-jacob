@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -28,6 +29,24 @@ func getUserHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "GID: %d\n", os.Getgid())
 }
 
+func getStartJobHandler(w http.ResponseWriter, r *http.Request) {
+	resp, err := http.Get("http://run-as-user:8000/api/v1/jobs")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(string(body))
+}
+
 func redirectMiddleware(next http.Handler) http.Handler {
 	// return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 	// 	if r.Header.Get("X-Forwarded-Proto") != "https" || r.TLS != nil {
@@ -50,8 +69,9 @@ func main() {
 
 	mux.HandleFunc("/", getRootHandler)
 	mux.HandleFunc("/test", getTestHandler)
-	//mux.HandleFunc("/headers", getHeadersHandler)
+	mux.HandleFunc("/headers", getHeadersHandler)
 	mux.HandleFunc("/runasuser", getUserHandler)
+	mux.HandleFunc("/startjob", getStartJobHandler)
 
 	err := http.ListenAndServe(":1234", redirectMiddleware(mux))
 
