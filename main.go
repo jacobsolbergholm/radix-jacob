@@ -33,18 +33,18 @@ func getStartJobHandler(w http.ResponseWriter, r *http.Request) {
 	resp, err := http.Get("http://run-as-user:8000/api/v1/jobs")
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Fprintf(w, "Error: %s", err)
 		return
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Fprintf(w, "Error: %s", err)
 		return
 	}
 
-	fmt.Println(string(body))
+	fmt.Fprintf(w, "Body:\n%s", string(body))
 }
 
 func redirectMiddleware(next http.Handler) http.Handler {
