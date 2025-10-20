@@ -64,6 +64,7 @@ spec:
   jobs:
     - name: run-as-user
       #image: ubuntu:latest
+      runAsUser: 1337
       src: runAsUserJob
       schedulerPort: 8000
       ports:

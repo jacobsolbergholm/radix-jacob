@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	"time"
 )
 
 func printUser() {
@@ -14,6 +13,4 @@ func printUser() {
 
 func main() {
 	printUser()
-
-	time.Sleep(10 * time.Minute)
 }
