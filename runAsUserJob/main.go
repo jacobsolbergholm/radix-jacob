@@ -1,16 +1,15 @@
 package main
 
 import (
-	"log"
+	"fmt"
+	"os"
+	"strconv"
 	"time"
 )
 
 func printUser() {
-	// fmt.Println("UID: " + strconv.Itoa(os.Getuid()))
-	// fmt.Println("GID: " + strconv.Itoa(os.Getgid()))
-	// fmt.Println("test bare")
-
-	log.Println("hello world")
+	fmt.Println("UID: " + strconv.Itoa(os.Getuid()))
+	fmt.Println("GID: " + strconv.Itoa(os.Getgid()))
 }
 
 func main() {
