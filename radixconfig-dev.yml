@@ -63,8 +63,8 @@ spec:
       #     credentials: azureWorkloadIdentity
   jobs:
     - name: run-as-user
-      image: ubuntu:latest
-      #src: runAsUserJob
+      #image: ubuntu:latest
+      src: runAsUserJob
       schedulerPort: 8000
       ports:
         - name: http
