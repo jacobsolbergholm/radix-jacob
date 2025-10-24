@@ -70,3 +70,6 @@ spec:
       ports:
         - name: http
           port: 3000
+      environmentConfig:
+        - environment: dev
+          runAsUser: 7331
