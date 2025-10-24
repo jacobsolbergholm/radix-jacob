@@ -75,3 +75,5 @@ spec:
       environmentConfig:
         - environment: dev
           runAsUser: 7331
+      variables:
+        USE_SWAGGER: "true"
