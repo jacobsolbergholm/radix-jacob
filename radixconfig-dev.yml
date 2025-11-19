@@ -66,7 +66,7 @@ spec:
       authentication:
         oauth2:
           clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
-          #scope: openid profile email offline_access 2b06f36c-5a78-45a6-9809-44816f59c1ff/user.read
+          scope: openid profile email offline_access
           #setXAuthRequestHeaders: true
           #setAuthorizationHeader: true
           #proxyPrefix: /oauth2
