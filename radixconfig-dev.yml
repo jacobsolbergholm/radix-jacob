@@ -66,17 +66,17 @@ spec:
       authentication:
         oauth2:
           clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
-          scope: openid profile email offline_access 2b06f36c-5a78-45a6-9809-44816f59c1ff/user.read
-          setXAuthRequestHeaders: true
-          setAuthorizationHeader: true
-          proxyPrefix: /oauth2
-          oidc:
-            issuerUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0
-            jwksUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/discovery/v2.0/keys
-            skipDiscovery: false
-            insecureSkipVerifyNonce: false
-          loginUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize
-          redeemUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token
+          #scope: openid profile email offline_access 2b06f36c-5a78-45a6-9809-44816f59c1ff/user.read
+          #setXAuthRequestHeaders: true
+          #setAuthorizationHeader: true
+          #proxyPrefix: /oauth2
+          # oidc:
+          #   issuerUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0
+          #   jwksUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/discovery/v2.0/keys
+          #   skipDiscovery: false
+          #   insecureSkipVerifyNonce: false
+          # loginUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize
+          # redeemUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token
           credentials: azureWorkloadIdentity
           sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie
 
