@@ -67,6 +67,10 @@ spec:
       environmentConfig:
         - environment: dev
     - name: auth-proxy
+      authentication:
+        oauth2:
+          setXAuthRequestHeaders: true
+          setAuthorizationHeader: true
       image: quay.io/oauth2-proxy/oauth2-proxy:v7.1.2
       publicPort: http
       secrets:
