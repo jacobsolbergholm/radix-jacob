@@ -9,6 +9,7 @@ import (
 )
 
 func getRootHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Root endpoint hit")
 	fmt.Fprintln(w, "Root endpoint reached")
 }
 
@@ -73,6 +74,7 @@ func main() {
 	mux.HandleFunc("/runasuser", getUserHandler)
 	mux.HandleFunc("/startjob", getStartJobHandler)
 
+	fmt.Println("Server starting on :1234")
 	err := http.ListenAndServe(":1234", redirectMiddleware(mux))
 
 	if errors.Is(err, http.ErrServerClosed) {
