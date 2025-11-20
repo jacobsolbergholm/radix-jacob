@@ -51,8 +51,4 @@ kubectl exec -n jacob-dev-dev <auth-proxy-pod> -- wget -O- http://frontend:1234
 - **503 Error**: Verify redirect URI matches in both radixconfig and Azure AD
 - **No id_token**: Ensure `openid` scope is included
 
-``
-
-Some comments here
-
-``
+``Some comments here
