@@ -67,8 +67,8 @@ spec:
         oauth2:
           clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
           scope: openid profile email offline_access
-          #setXAuthRequestHeaders: true
-          #setAuthorizationHeader: true
+          setXAuthRequestHeaders: true
+          setAuthorizationHeader: true
           #proxyPrefix: /oauth2
           # oidc:
           #   issuerUrl: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0
