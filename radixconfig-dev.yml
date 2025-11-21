@@ -110,6 +110,6 @@ spec:
           port: 3000
       # environmentConfig:
       #   - environment: dev
-      #     runAsUser: 7332
+      #     runAsUser: 7331
       variables:
         USE_SWAGGER: "true"
