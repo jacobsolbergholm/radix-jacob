@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"sort"
 )
 
 func getRootHandler(w http.ResponseWriter, r *http.Request) {
@@ -20,8 +21,14 @@ func getTestHandler(w http.ResponseWriter, r *http.Request) {
 func getHeadersHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Headers endpoint reached\n")
 
-	for key, values := range r.Header {
-		fmt.Fprintf(w, "%s: %s\n", key, values)
+	keys := make([]string, 0, len(r.Header))
+	for key := range r.Header {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+
+	for _, key := range keys {
+		fmt.Fprintf(w, "%s: %s\n", key, r.Header[key])
 	}
 }
 
