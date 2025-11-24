@@ -20,7 +20,7 @@ spec:
       variables:
         USE_SWAGGER: "true"
       src: "."
-      # publicPort: http
+      publicPort: http
       ports:
        - name: http
          port: 1234
