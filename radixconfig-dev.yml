@@ -7,9 +7,9 @@ metadata:
 spec:
   build:
     useBuildKit: true
-  dnsAppAlias:
-    component: auth-proxy
-    environment: dev
+  # dnsAppAlias:
+  #   component: auth-proxy
+  #   environment: dev
   environments:
     - name: dev
       build:
