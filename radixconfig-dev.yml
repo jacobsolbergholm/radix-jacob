@@ -45,22 +45,22 @@ spec:
               cpu: "20m"
               memory: "10Mi"
       runAsUser: 1337
-      # authentication:
-      #   oauth2:
-      #     clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
-      #     scope: openid profile email offline_access
-      #     setXAuthRequestHeaders: true
-      #     setAuthorizationHeader: true
-      #     credentials: azureWorkloadIdentity
-      #     sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie
-      #     cookieStore:
-      #       minimal: false
-      #     cookie:
-      #       name: _oauth2_proxy
-      #       expire: 168h0m0s
-      #       refresh: 60m0s
-      #       sameSite: lax
-#
+      authentication:
+        oauth2:
+          clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
+          scope: openid profile email offline_access
+          setXAuthRequestHeaders: true
+          setAuthorizationHeader: true
+          credentials: azureWorkloadIdentity
+          sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie
+          cookieStore:
+            minimal: false
+          cookie:
+            name: _oauth2_proxy
+            expire: 168h0m0s
+            refresh: 60m0s
+            sameSite: lax
+            
     # - name: auth-state
     #   dockerfileName: auth-state.Dockerfile
     #   variables:
