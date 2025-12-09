@@ -52,7 +52,7 @@ spec:
       #     setXAuthRequestHeaders: true
       #     setAuthorizationHeader: true
       #     credentials: azureWorkloadIdentity
-      #     sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie.
+      #     sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie
       #     cookieStore:
       #       minimal: false
       #     cookie:
