@@ -60,7 +60,12 @@ spec:
             expire: 168h0m0s
             refresh: 60m0s
             sameSite: lax
-            
+
+    - name: dummy1
+      src: "."
+      ports:
+       - name: http
+         port: 1235      
     # - name: auth-state
     #   dockerfileName: auth-state.Dockerfile
     #   variables:
