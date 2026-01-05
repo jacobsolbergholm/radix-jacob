@@ -64,6 +64,7 @@ spec:
             sameSite: lax
     - name: test-deploy-component
       image: ubuntu:latest
+      runAsUser: 1337
     # - name: auth-state
     #   dockerfileName: auth-state.Dockerfile
     #   variables:
