@@ -18,50 +18,50 @@ spec:
         from: master
     - name: prod
   components:
-    - name: frontend
-      variables:
-        USE_SWAGGER: "true"
-      src: "."
-      publicPort: http
-      ports:
-       - name: http
-         port: 1234
-      environmentConfig:
-        - environment: dev
-          #runAsUser: 2330
-          horizontalScaling:
-            maxReplicas: 1
-            minReplicas: 0
-            triggers:
-              - name: cron
-                cron:
-                  timezone: Europe/Oslo
-                  start: 0 7 * * 1-5 # 07:00 Monday - Friday
-                  end: 0 17 * * 1-5 # 17:00 Monday - Friday
-                  desiredReplicas: 1
-          resources:
-            requests:
-              cpu: "10m"
-              memory: "5M"
-            limits:
-              cpu: "20m"
-              memory: "10Mi"
-      runAsUser: 1337
-      authentication:
-        oauth2:
-          clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
-          scope: openid profile email offline_access
-          setXAuthRequestHeaders: true
-          setAuthorizationHeader: true
-          credentials: azureWorkloadIdentity
-          sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie
-          cookieStore:
-            minimal: false
-          cookie:
-            name: _oauth2_proxy
-            expire: 168h0m0s
-            refresh: 60m0s
-            sameSite: lax
+    # - name: frontend
+    #   variables:
+    #     USE_SWAGGER: "true"
+    #   src: "."
+    #   publicPort: http
+    #   ports:
+    #    - name: http
+    #      port: 1234
+    #   environmentConfig:
+    #     - environment: dev
+    #       #runAsUser: 2330
+    #       horizontalScaling:
+    #         maxReplicas: 1
+    #         minReplicas: 0
+    #         triggers:
+    #           - name: cron
+    #             cron:
+    #               timezone: Europe/Oslo
+    #               start: 0 7 * * 1-5 # 07:00 Monday - Friday
+    #               end: 0 17 * * 1-5 # 17:00 Monday - Friday
+    #               desiredReplicas: 1
+    #       resources:
+    #         requests:
+    #           cpu: "10m"
+    #           memory: "5M"
+    #         limits:
+    #           cpu: "20m"
+    #           memory: "10Mi"
+    #   runAsUser: 1337
+    #   authentication:
+    #     oauth2:
+    #       clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
+    #       scope: openid profile email offline_access
+    #       setXAuthRequestHeaders: true
+    #       setAuthorizationHeader: true
+    #       credentials: azureWorkloadIdentity
+    #       sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie
+    #       cookieStore:
+    #         minimal: false
+    #       cookie:
+    #         name: _oauth2_proxy
+    #         expire: 168h0m0s
+    #         refresh: 60m0s
+    #         sameSite: lax
     - name: test-deploy-component
       image: ubuntu:latest
       runAsUser: 1337
@@ -104,17 +104,17 @@ spec:
     #         OAUTH2_PROXY_CLIENT_ID: "5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6" # client id for the UI. Application exist under Azure Active Directory -> App registration
     #         OAUTH2_PROXY_REDIRECT_URL: "/oauth2/callback"
     #         OAUTH2_PROXY_SCOPE: "openid email offline_access" # UID is resource client id for API. Application exist under Azure Active Directory -> App registration
-  jobs:
-    - name: run-as-user
-      #image: ubuntu:latest
-      runAsUser: 1338
-      src: runAsUserJob
-      schedulerPort: 8000
-      ports:
-        - name: http
-          port: 3000
-      # environmentConfig:
-      #   - environment: dev
-      #     runAsUser: 7331
-      variables:
-        USE_SWAGGER: "true"
+  # jobs:
+  #   - name: run-as-user
+  #     #image: ubuntu:latest
+  #     runAsUser: 1338
+  #     src: runAsUserJob
+  #     schedulerPort: 8000
+  #     ports:
+  #       - name: http
+  #         port: 3000
+  #     # environmentConfig:
+  #     #   - environment: dev
+  #     #     runAsUser: 7331
+  #     variables:
+  #       USE_SWAGGER: "true"
