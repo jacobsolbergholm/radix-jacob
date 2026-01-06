@@ -5,7 +5,7 @@ kind: RadixApplication
 metadata:
   name: jacob-dev
   annotations:
-    radix.equinor.com/preview-oauth2-proxy-mode: "dev"
+#    radix.equinor.com/preview-oauth2-proxy-mode: "dev"
 spec:
   build:
     useBuildKit: true
@@ -104,17 +104,17 @@ spec:
     #         OAUTH2_PROXY_CLIENT_ID: "5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6" # client id for the UI. Application exist under Azure Active Directory -> App registration
     #         OAUTH2_PROXY_REDIRECT_URL: "/oauth2/callback"
     #         OAUTH2_PROXY_SCOPE: "openid email offline_access" # UID is resource client id for API. Application exist under Azure Active Directory -> App registration
-  jobs:
-    - name: run-as-user
-      #image: ubuntu:latest
-      runAsUser: 1338
-      src: runAsUserJob
-      schedulerPort: 8000
-      ports:
-        - name: http
-          port: 3000
-      # environmentConfig:
-      #   - environment: dev
-      #     runAsUser: 7331
-      variables:
-        USE_SWAGGER: "true"
+  # jobs:
+  #   - name: run-as-user
+  #     #image: ubuntu:latest
+  #     runAsUser: 1338
+  #     src: runAsUserJob
+  #     schedulerPort: 8000
+  #     ports:
+  #       - name: http
+  #         port: 3000
+  #     # environmentConfig:
+  #     #   - environment: dev
+  #     #     runAsUser: 7331
+  #     variables:
+  #       USE_SWAGGER: "true"
