@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/equinor/radix-operator/release/json-schema/radixapplication.json
+
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+metadata:
+  name: jacob-dev
+  annotations:
+   radix.equinor.com/preview-oauth2-proxy-mode: "dev"
+spec:
+  build:
+    useBuildKit: true
+  # dnsAppAlias:
+  #   component: auth-proxy
+  #   environment: dev
+  environments:
+    - name: dev
+      build:
+        from: master
+    - name: prod
+  components:
+    - name: frontend
+      variables:
+        USE_SWAGGER: "true"
+      src: "."
+      publicPort: http
+      ports:
+       - name: http
+         port: 1234
+      environmentConfig:
+        - environment: dev
+          #runAsUser: 2330
+          horizontalScaling:
+            maxReplicas: 1
+            minReplicas: 0
+            triggers:
+              - name: cron
+                cron:
+                  timezone: Europe/Oslo
+                  start: 0 7 * * 1-5 # 07:00 Monday - Friday
+                  end: 0 17 * * 1-5 # 17:00 Monday - Friday
+                  desiredReplicas: 1
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "5M"
+            limits:
+              cpu: "20m"
+              memory: "10Mi"
+      runAsUser: 1337
