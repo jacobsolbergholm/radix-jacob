@@ -3,7 +3,7 @@
 apiVersion: radix.equinor.com/v1
 kind: RadixApplication
 metadata:
-  name: jacob-dev
+  name: ame test-docker-io-update
   annotations:
    radix.equinor.com/preview-oauth2-proxy-mode: "dev"
 spec:
