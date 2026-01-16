@@ -51,7 +51,7 @@ spec:
         oauth2:
           clientId: 5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6
           scope: openid profile email offline_access
-          setXAuthRequestHeaders: true
+          setXAuthRequestHeaders: false
           setAuthorizationHeader: true
           credentials: azureWorkloadIdentity
           sessionStoreType: systemManaged # Defaults to cookie, can be systemManaged, redis or cookie
