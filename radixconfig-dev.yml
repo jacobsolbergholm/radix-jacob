@@ -28,7 +28,7 @@ spec:
          port: 1234
       environmentConfig:
         - environment: dev
-          #runAsUser: 2331
+          #runAsUser: 2332
           horizontalScaling:
             maxReplicas: 1
             minReplicas: 0
