@@ -4,8 +4,8 @@ apiVersion: radix.equinor.com/v1
 kind: RadixApplication
 metadata:
   name: jacob-dev
-  annotations:
-   radix.equinor.com/preview-oauth2-proxy-mode: "dev"
+  # annotations:
+  #  radix.equinor.com/preview-oauth2-proxy-mode: "dev"
 spec:
   build:
     useBuildKit: true
