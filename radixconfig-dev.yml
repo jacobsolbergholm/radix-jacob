@@ -104,7 +104,13 @@ spec:
     #         OAUTH2_PROXY_CLIENT_ID: "5e48ca1f-a2bf-4dec-b96d-bbf8ce69f9f6" # client id for the UI. Application exist under Azure Active Directory -> App registration
     #         OAUTH2_PROXY_REDIRECT_URL: "/oauth2/callback"
     #         OAUTH2_PROXY_SCOPE: "openid email offline_access" # UID is resource client id for API. Application exist under Azure Active Directory -> App registration
-  # jobs:
+  jobs:
+      - name: cron-job
+        image: alpine:3
+        schedulerPort: 8080
+        command: ["/bin/sh"]
+        args: ["-c", "echo 'Hello from cron job'"]
+        runAsUser: 1000
   #   - name: run-as-user
   #     #image: ubuntu:latest
   #     runAsUser: 1338
