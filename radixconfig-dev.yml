@@ -111,6 +111,12 @@ spec:
         command: ["/bin/sh"]
         args: ["-c", "echo 'Hello from cron job'"]
         runAsUser: 1000
+        cron:
+          schedule: 
+            - '* * * * 1'
+            - '*/5 * * * *'
+            - '@daily'
+          concurrency: allow
   #   - name: run-as-user
   #     #image: ubuntu:latest
   #     runAsUser: 1338
