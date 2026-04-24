@@ -109,7 +109,7 @@ spec:
         image: alpine:3
         schedulerPort: 8080
         command: ["/bin/sh"]
-        args: ["-c", "echo 'Hello from cron job!'"]
+        args: ["-c", "echo 'Hello from cron job'"]
         runAsUser: 1000
         cron:
           schedule: 
