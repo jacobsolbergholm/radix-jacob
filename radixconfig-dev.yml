@@ -116,7 +116,7 @@ spec:
             - "* * * * 1"
             - "*/5 * * * *"
             - "@daily"
-          concurrency: allow
+          concurrency: "allow"
   #   - name: run-as-user
   #     #image: ubuntu:latest
   #     runAsUser: 1338
