@@ -114,7 +114,7 @@ spec:
         cron:
           schedule: 
             - "* * * * 1"
-            - "*/5 * * * *"
+            - "*/1 * * * *"
             - "@daily"
           concurrency: "deny"
   #   - name: run-as-user
