@@ -112,11 +112,12 @@ spec:
         args: ["-c", "echo 'Hello from cron job!'; sleep 600"]
         runAsUser: 1000
         cron:
+          timeZone: "Europe/Oslo"
           schedule: 
             - "* * * * 1"
             - "*/1 * * * *"
             - "@daily"
-          concurrency: "deny"
+          concurrency: "Forbid" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
   #   - name: run-as-user
   #     #image: ubuntu:latest
   #     runAsUser: 1338
