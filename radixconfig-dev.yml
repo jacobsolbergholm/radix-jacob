@@ -115,7 +115,7 @@ spec:
           #timeZone: "Europe/Oslo"
           timeZone: "America/New_York"
           schedule: 
-            - "10 9 * * *"
+            - "14 5 * * *"
             #- "* * * * 1"
             #- "*/1 * * * *"
             #- "@daily"
