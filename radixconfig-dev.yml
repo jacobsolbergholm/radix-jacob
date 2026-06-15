@@ -111,6 +111,13 @@ spec:
         command: ["/bin/sh"]
         args: ["-c", "echo 'Hello from cron job!'; sleep 10"]
         runAsUser: 1000
+        environmentConfig:
+          - environment: dev
+            cron:
+              timeZone: "Europe/Oslo"
+              schedule: 
+                - "*/2 * * * *"
+              concurrency: "Allow"
         cron:
           #timeZone: "Europe/Oslo"
           timeZone: "America/New_York"
