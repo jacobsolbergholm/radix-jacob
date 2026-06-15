@@ -116,7 +116,7 @@ spec:
             cron:
               timeZone: "Europe/Oslo"
               schedule: 
-                - "*/2 * * * *"
+                - "*/1 * * * *"
               concurrency: "Allow"
         cron:
           #timeZone: "Europe/Oslo"
