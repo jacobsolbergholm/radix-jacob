@@ -126,7 +126,7 @@ spec:
             #- "* * * * 1"
             - "*/1 * * * *"
             #- "@daily"
-          concurrency: "Forbid" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
+          concurrency: "Replace" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
   #   - name: run-as-user
   #     #image: ubuntu:latest
   #     runAsUser: 1338
