@@ -113,11 +113,12 @@ spec:
         runAsUser: 1000
         environmentConfig:
           - environment: dev
-            cron:
-              timeZone: "Europe/Oslo"
-              schedule: 
-                - "*/1 * * * *"
-              concurrency: "Replace"
+            # cron:
+            #   timeZone: "Europe/Oslo"
+            #   schedule: 
+            #     - "*/1 * * * *"
+            #   concurrency: "Replace"
+            runAsUser: 7331
         cron:
           #timeZone: "Invalid/Zone"
           #timeZone: " "
