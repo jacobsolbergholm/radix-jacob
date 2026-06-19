@@ -120,14 +120,15 @@ spec:
         #       concurrency: "Allow"
         cron:
           #timeZone: "Invalid/Zone"
-          timeZone: "Europe/Oslo"
+          timeZone: " "
+          #timeZone: "Europe/Oslo"
           #timeZone: "America/New_York"
           schedule: 
             - "27 11 * * *"
             #- "* * * * 1"
             #- "*/1 * * * *"
             #- "@daily"
-          #concurrency: "Forbid" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
+          concurrency: "Allow" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
   #   - name: run-as-user
   #     #image: ubuntu:latest
   #     runAsUser: 1338
