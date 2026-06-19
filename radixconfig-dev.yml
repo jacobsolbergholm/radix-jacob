@@ -124,9 +124,9 @@ spec:
           #timeZone: "Europe/Oslo"
           #timeZone: "America/New_York"
           schedule: 
-            - "27 11 * * *"
+            #- "27 11 * * *"
             #- "* * * * 1"
-            #- "*/1 * * * *"
+            - "*/1 * * * *"
             #- "@daily"
           concurrency: "Allow" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
   #   - name: run-as-user
