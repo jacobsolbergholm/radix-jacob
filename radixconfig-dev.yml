@@ -71,4 +71,4 @@ spec:
             #- "* * * * 1"
             - "*/1 * * * *"
             #- "@daily"
-          concurrency: "Replace" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
+          concurrency: "Allow" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
