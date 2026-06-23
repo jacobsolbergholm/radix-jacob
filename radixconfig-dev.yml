@@ -67,7 +67,7 @@ spec:
         cron:
           timeZone: "Europe/Oslo"
           #timeZone: "America/New_York"
-          schedule: 
+          schedules: 
             #- "* * * * 1"
             - "*/1 * * * *"
             #- "@daily"
