@@ -64,11 +64,11 @@ spec:
         command: ["/bin/sh"]
         args: ["-c", "echo 'Hello from cron job!'; sleep 90"]
         runAsUser: 1000
-        # cron:
-        #   timeZone: "Europe/Oslo"
-        #   #timeZone: "America/New_York"
-        #   schedule: 
-        #     #- "* * * * 1"
-        #     - "*/1 * * * *"
-        #     #- "@daily"
-        #   concurrency: "Replace" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
+        cron:
+          timeZone: "Europe/Oslo"
+          #timeZone: "America/New_York"
+          schedule: 
+            #- "* * * * 1"
+            - "*/1 * * * *"
+            #- "@daily"
+          concurrency: "Replace" # Allow, Forbid, Replace. Naming based on k8s concurrency policy: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
